@@ -47,6 +47,15 @@
   (loop (add-record (prompt-cd-maker))
      (if (not (y-or-n-p "Another entry? [y/n]: ")) (return))))
 
+;; Saving and Loading the DB
+(defun save-db (filename)
+  "Save the DB to a file."
+  (with-open-file (buf filename
+                       :direction :output
+                       :if-exists :supersede)
+    (with-standard-io-syntax
+      (print *db-music* buf))))
+
 
 ;; Main.
 (add-record (make-cd "Love Supreme" "John Coltrane" 1963 t))
