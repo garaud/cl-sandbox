@@ -62,3 +62,10 @@
   (with-open-file (buf filename)
     (with-standard-io-syntax
       (setf *db-music* (read buf)))))
+
+;; Querying DB.
+(defun select-by-artist (name)
+  "Select an artist."
+  (remove-if-not
+   #'(lambda (record) (equal (getf record :artist) name))
+   *db-music*))
