@@ -51,5 +51,6 @@
 ;; Main.
 (add-record (make-cd "Love Supreme" "John Coltrane" 1963 t))
 (add-record (make-cd "Live With Britten Symph." "Jaga Jazzist" 2013 t))
+(add-record (make-cd "ESTOILE NAIANT" "patten" 2014 nil))
 (print *db-music*)
 (dump-db) ;; return nil if evaluates because you print into the stdout.
