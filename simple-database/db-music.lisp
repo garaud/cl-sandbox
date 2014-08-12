@@ -33,12 +33,20 @@
   (force-output *query-io*)
   (read-line *query-io*))
 
+;; Improving the User Interaction
 (defun prompt-cd-maker ()
   "Function for asking four entries to add a new CD to the DB."
   (make-cd (prompt-read "Title")
            (prompt-read "Artist")
            (parse-integer (prompt-read "Year") :junk-allowed t)
-           (y-or-n-p "Ripped [y/n]")))
+           (y-or-n-p "Ripped [y/n]: ")))
+
+;; Improving the User Interaction
+(defun prompt-add-cds ()
+  "Main prompt to add CDs to the DB."
+  (loop (add-record (prompt-cd-maker))
+     (if (not (y-or-n-p "Another entry? [y/n]: ")) (return))))
+
 
 ;; Main.
 (add-record (make-cd "Love Supreme" "John Coltrane" 1963 t))
