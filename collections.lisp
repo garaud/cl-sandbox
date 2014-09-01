@@ -2,10 +2,7 @@
 
 ;; Some func calls test on collections such as list, vector and has-table.
 
-;; * try to sort *names* by a lexicographic order
-;; * try apply a function such as capitalize of uppercase on the list *names*
 ;; * try to concatenate & merge two list of int such as *numbers*
-;; * try to make a copy of the original *numbers* and then to sort it (keep both)
 ;; * do some simple dolist, loop, etc.
 ;; * make a simple hash-table (name instrument) or (name age) and try to
 ;;   manupulate it.
@@ -28,6 +25,8 @@
 (let ((names (copy-list *names*)))
   (format t "sort by name ~a~%" (sort names 'string-lessp)))
 
-;; (if (not (string-greaterp "zou" "bam"))
-;;     (print "yes")
-;;     (print "no"))
+;; Apply uppercase and capitalize string functions.
+;; Note: a string is a vector of chars. You need to pass an element-type to the
+;; function 'map.
+(format t "~a~%" (map 'vector 'string-upcase *names*))
+(format t "~a~%" (map 'vector 'string-capitalize *names*))
