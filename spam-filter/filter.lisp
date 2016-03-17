@@ -1,3 +1,8 @@
+;; Spam filter
+;; Follow the chapter 23: Practical Spam Filter
+;; from the Practical Common Lisp book by P.Siebel
+;; http://www.gigamonkeys.com/book/practical-a-spam-filter.html
+
 (in-package :spam-filter)
 
 (ql:quickload "cl-ppcre")
@@ -10,7 +15,9 @@
 (defvar *total-ham* 0)
 
 (cl-ppcre:all-matches-as-strings "[a-z]{3,}" *text*)
-
+(delete-duplicates
+ (cl-ppcre:all-matches-as-strings "[a-z]{3,}" "vous vous truc chouette truc")
+ :test #'string=)
 
 
 (defclass  word-feature ()
@@ -30,7 +37,7 @@
     :initform 0
     :documentation "Ham count")))
 
-(make-instance 'word-feature :word "jazz")
+;; (make-instance 'word-feature :word "jazz")
 
 
 
@@ -42,16 +49,19 @@
 
 (clear-database)
 
+
 (defun intern-feature (word)
   "insert a new word feature into the database from a word"
   (or (gethash word *feature-database*)
       (setf (gethash  word *feature-database*)
             (make-instance 'word-feature :word word))))
 
+
 (defun extract-words (text)
   "extract words from a text"
   (delete-duplicates
-   (cl-ppcre:all-matches-as-strings "[a-zA-Z]{3,}" text)))
+   (cl-ppcre:all-matches-as-strings "[a-zA-Z]{3,}" text)
+   :test #'string=))
 
 (extract-words *text*)
 
@@ -103,5 +113,20 @@
 
 
 (defun spam-probability (feature)
-  (with-slots (spam-count ham-count) feature)
-  (/ spam-count (+ spam-count ham-count)))
+  (with-slots (spam-count ham-count) feature
+    (let ((spam-frequency (/ spam-count (max 1 *total-spam*)))
+          (ham-frequency (/ ham-count (max 1 *total-ham*))))
+      (/ spam-frequency (+ spam-frequency ham-frequency)))))
+
+;; (maphash #'(lambda (k v) (format t "~S: ~S~%" k v)) *feature-database*)
+
+(spam-probability (gethash "mail" *feature-database*))
+
+
+
+
+(defun main (text type)
+  ""
+  (progn
+    (extract-features text)
+    (train text type)))
