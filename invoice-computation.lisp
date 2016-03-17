@@ -8,20 +8,18 @@
 
 (getf (car *invoices*) :amount)
 
-(= 2 2)
-
 (defun compute (invoice)
   "compute the total amount"
   (* (getf invoice :amount) (getf invoice :qty)))
 
 (defun month-filter (invoice month)
-  ""
+  "retrieve invoice just for a specific month"
   (= (getf invoice :due-to) month))
 
 (month-filter (car *invoices*) 9)
 
 (defun makef (month)
-  "create a month filter for a specific"
+  "create a month filter"
   #'(lambda (x) (= (getf x :due-to) month)))
 
 (reduce #'+
