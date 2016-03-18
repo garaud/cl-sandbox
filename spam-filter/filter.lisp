@@ -7,7 +7,7 @@
 
 (ql:quickload "cl-ppcre")
 
-(defvar *text* "ceci est un texte de mail, je vous assure, je ne suis pas un mail spam")
+(defvar *text* "this is just a text from mail. Believe me, I'm not an email spam!")
 (defvar *feature-database* (make-hash-table :test #'equal))
 (defvar *max-ham-score* 0.4)
 (defvar *min-spam-score* 0.6)
@@ -16,7 +16,7 @@
 
 (cl-ppcre:all-matches-as-strings "[a-z]{3,}" *text*)
 (delete-duplicates
- (cl-ppcre:all-matches-as-strings "[a-z]{3,}" "vous vous truc chouette truc")
+ (cl-ppcre:all-matches-as-strings "[a-z]{3,}" "some some duplicated words words")
  :test #'string=)
 
 
@@ -36,9 +36,6 @@
     :accessor ham-count
     :initform 0
     :documentation "Ham count")))
-
-;; (make-instance 'word-feature :word "jazz")
-
 
 
 (defun clear-database ()
@@ -69,7 +66,6 @@
   "extracts all features from a text"
   (mapcar #'intern-feature (extract-words text)))
 
-(extract-features *text*)
 
 (defmethod print-object ((object word-feature) stream)
   "proper print word-feature"
@@ -77,9 +73,14 @@
     (with-slots (word ham-count spam-count) object
       (format stream "~s :hams ~d :spams ~d" word ham-count spam-count))))
 
+
+(extract-features *text*)
+
+
 (defun classify (text)
   "classify a text as spam or ham"
   (classification (score (extract-features text))))
+
 
 (defun classification (score)
   "is it a spam or a ham?"
@@ -90,17 +91,20 @@
 
 (classification .9)
 
+
 (defun train (text type)
   "train add +1 for ham or spam (type) for each word features in the text"
   (dolist (feature (extract-features text))
     (increment-count feature type))
   (increment-total-count type))
 
+
 (defun increment-count (feature type)
   "increment ham or spam, i.e. type"
   (ecase type
     (ham (incf (ham-count feature)))
     (spam (incf (spam-count feature)))))
+
 
 (defun increment-total-count (type)
   "increment the total number of ham/spam"
