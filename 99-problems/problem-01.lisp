@@ -4,7 +4,7 @@
 
 (defun my-last (seq)
   "last element of a list"
-  (car (reverse seq)))
+  (first (reverse seq)))
 
 
 (defparameter seq '(a b c d))
@@ -13,8 +13,8 @@
 ;; recursive one, more efficient
 (defun my-last-rec (seq)
   (if (eq (length seq) 1)
-      (car seq)
-      (my-last-rec (cdr seq))))
+      (first seq)
+      (my-last-rec (rest seq))))
 
 (my-last seq) ;; D
 (my-last-rec seq) ;; D
