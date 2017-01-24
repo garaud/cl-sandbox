@@ -1,6 +1,10 @@
 ;; 01 find the last element of a list
 
-(in-package #:lisp-problems)
+(in-package :lisp-problems)
+
+(ql:quickload :lisp-unit)
+(use-package :lisp-unit)
+
 
 (defun my-last (seq)
   "last element of a list"
@@ -18,3 +22,8 @@
 
 (my-last seq) ;; D
 (my-last-rec seq) ;; D
+
+
+(define-test test-last
+  (assert-equal (my-last seq) 'd))
+(run-tests :all)
