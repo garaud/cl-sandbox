@@ -10,3 +10,13 @@
   (when (eq (length seq) 1)
     (error "There is just a one element"))
   (first (rest (reverse seq))))
+
+(defun my-last-but-rec (seq)
+  "same as before but recursively"
+  (when (emptyp seq)
+    (error "The list is empty"))
+  (when (eq (length seq) 1)
+    (error "There is just a one element"))
+  (if (eq (length seq) 2)
+      (first seq)
+      (my-last-but-rec (rest seq))))

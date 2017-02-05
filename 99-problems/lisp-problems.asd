@@ -8,4 +8,5 @@
                #:alexandria)
   :serial t
   :components ((:file "package")
-               (:file "problem-01")))
+               (:file "problem-01")
+               (:file "problem-02")))

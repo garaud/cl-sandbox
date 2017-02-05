@@ -5,5 +5,6 @@
         #:alexandria)
   (:export :my-last
            :my-last-rec
-           :my-last-but))
+           :my-last-but
+           :my-last-but-rec))
 
