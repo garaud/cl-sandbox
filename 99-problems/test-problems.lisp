@@ -33,5 +33,12 @@
     (assert-error 'simple-error (my-last-but-rec '()))
     (assert-error 'simple-error (my-last-but-rec '(one)))))
 
+;; # 03: find the k-th element of a list
+(define-test test-03-element-at
+  (let ((seq '(a b c d)))
+    (assert-equal (element-at seq 2) 'c)
+    (assert-error 'simple-error (element-at seq 12))
+    (assert-error 'simple-error (element-at seq -1))))
+
 
 (run-tests :all)

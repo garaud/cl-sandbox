@@ -6,5 +6,5 @@
   (:export :my-last
            :my-last-rec
            :my-last-but
-           :my-last-but-rec))
-
+           :my-last-but-rec
+           :element-at))
