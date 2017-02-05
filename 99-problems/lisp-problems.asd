@@ -4,8 +4,8 @@
   :description "Ninety-nine Lisp Problems"
   :author "Damien Garaud"
   :license "WTFPL"
-  :depends-on (#:lisp-unit)
+  :depends-on (#:lisp-unit
+               #:alexandria)
   :serial t
   :components ((:file "package")
-               (:file "lisp-problems")))
-
+               (:file "problem-01")))
