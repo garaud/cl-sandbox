@@ -4,5 +4,6 @@
   (:use #:cl
         #:alexandria)
   (:export :my-last
-           :my-last-rec))
+           :my-last-rec
+           :my-last-but))
 
