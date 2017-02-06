@@ -46,5 +46,12 @@
     (assert-equal (element-nb seq) 4)
     (assert-equal (element-nb ()) 0)))
 
+;; # 05: reverse a list
+(define-test test-05-reverse-a-list
+  (let ((seq '(a b c d))
+        (nested '((list :a :b) (list 1 2) (list t nil))))
+    (assert-equal (my-reverse seq) '(d c b a))
+    (assert-equal (my-reverse nested) '((list t nil) (list 1 2) (list :a :b)))))
+
 
 (run-tests :all)
