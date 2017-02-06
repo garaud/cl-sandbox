@@ -20,6 +20,6 @@ You can also find Haskell, Java or Scala solutions : https://github.com/shekharg
 
 * Link the folder to the QuickLisp local projects directory
   (e.g. `~/quicklisp/local-projects`)
-* Open Emacs, run SLIME and do `(ql:quickload 'lisp-problems')`
+* Open Emacs, run SLIME and do `(ql:quickload 'lisp-problems)`
 * Call any function with `(lisp-problems:any-func)`
 * Launch tests with a simple `(load "./test-problems.lisp")`
