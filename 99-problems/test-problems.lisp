@@ -40,5 +40,11 @@
     (assert-error 'simple-error (element-at seq 12))
     (assert-error 'simple-error (element-at seq -1))))
 
+;; # 04: find the number of elements of a list
+(define-test test-04-element-nb
+  (let ((seq '(a b c d)))
+    (assert-equal (element-nb seq) 4)
+    (assert-equal (element-nb ()) 0)))
+
 
 (run-tests :all)
