@@ -9,4 +9,5 @@
            :my-last-but-rec
            :element-at
            :element-nb
-           :my-reverse))
+           :my-reverse
+           :palindrome-p))

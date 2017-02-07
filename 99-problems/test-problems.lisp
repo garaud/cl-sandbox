@@ -53,5 +53,14 @@
     (assert-equal (my-reverse seq) '(d c b a))
     (assert-equal (my-reverse nested) '((list t nil) (list 1 2) (list :a :b)))))
 
+;; # 06: find out whether a list is a palindrome
+(define-test test-06-is-a-palindrome
+  (let ((palindrome '(k a y a k))
+        (not-palindrome '(0 1 2 3 4))
+        (empty-seq ()))
+    (assert-true (palindrome-p palindrome))
+    (assert-false (palindrome-p not-palindrome))
+    (assert-false (palindrome-p empty-seq))))
+
 
 (run-tests :all)
