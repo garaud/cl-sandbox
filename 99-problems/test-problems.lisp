@@ -62,5 +62,12 @@
     (assert-false (palindrome-p not-palindrome))
     (assert-false (palindrome-p empty-seq))))
 
+;; # 07:  flatten a nested list structure
+(define-test test-07-flatten-a-list
+  (let ((nested '('(:a :b) 12 '("one" "two") -5))
+        (seq '(1 2 "a" t)))
+    (assert-equal '(:a :b 12 "one" "two" -5) (my-flatten nested))
+    (assert-equal '(1 2 "a" t) (my-flatten seq))))
+
 
 (run-tests :all)

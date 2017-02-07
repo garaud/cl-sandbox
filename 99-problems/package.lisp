@@ -10,4 +10,5 @@
            :element-at
            :element-nb
            :my-reverse
-           :palindrome-p))
+           :palindrome-p
+           :my-flatten))
