@@ -5,4 +5,7 @@
 
 (defun my-reverse (seq)
   "Reverse a list"
-  seq)
+  (let ((result ()))
+    (dolist (x seq)
+      (push x result))
+    result))
