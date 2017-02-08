@@ -4,12 +4,12 @@
 
 
 (defun my-flatten (seq)
-  "flatten a nested list structure"
-  (let ((result ()))
-    (dolist (x seq)
-      (if (listp x)
-          (setq result (append result x))
-          (setq result (append result (list x)))))
-    result))
+  "flatten a nest list structure"
+  (labels ((recur (seq result)
+             (cond
+               ((null seq) result)
+               ((atom seq) (cons seq result))
+               (t (recur (first seq) (recur (rest seq) result))))))
+    (recur seq nil)))
 
 ;; (my-flatten (list '(a b) '(1 2) :z))
