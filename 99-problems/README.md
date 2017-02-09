@@ -15,6 +15,7 @@ You can also find Haskell, Java or Scala solutions : https://github.com/shekharg
 
 * quicklisp
 * lisp-unit
+* alexandria
 
 ## Launch & Test
 
