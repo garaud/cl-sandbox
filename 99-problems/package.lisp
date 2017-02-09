@@ -11,4 +11,5 @@
            :element-nb
            :my-reverse
            :palindrome-p
-           :my-flatten))
+           :my-flatten
+           :uniq))

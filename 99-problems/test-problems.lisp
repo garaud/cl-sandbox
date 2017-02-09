@@ -62,7 +62,7 @@
     (assert-false (palindrome-p not-palindrome))
     (assert-false (palindrome-p empty-seq))))
 
-;; # 07:  flatten a nested list structure
+;; # 07: flatten a nested list structure
 (define-test test-07-flatten-a-list
   (let ((nested (list '(:a :b) 12 '("one" "two") -5))
         (seq '(1 2 "a" t))
@@ -70,6 +70,14 @@
     (assert-equal '(:a :b 12 "one" "two" -5) (my-flatten nested))
     (assert-equal '(1 2 "a" t) (my-flatten seq))
     (assert-equal '(a b c d e) (my-flatten nested-2))))
+
+;; # 08: eliminate consecutive duplicates of list elements
+(define-test test-08-drop-consecutive-duplicated
+  (let ((seq-with-duplicates (list 1 2 2 3 4 5 5 2 3))
+        (seq-wo-duplicates (list "a" "b" "c" "a" "b" "c"))
+        (empty-seq ()))
+    (assert-equal '(1 2 3 4 5 2 3) (uniq seq-with-duplicates))
+    (assert-equal '("a" "b" "c" "a" "b" "c") (uniq seq-wo-duplicates))))
 
 
 (run-tests :all)
