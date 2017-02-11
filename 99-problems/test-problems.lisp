@@ -80,5 +80,14 @@
     (assert-equal '("a" "b" "c" "a" "b" "c") (uniq seq-wo-duplicates))
     (assert-equal '() (uniq empty-seq))))
 
+;; # 09: pack consecutive duplicates of list elements into sublists
+(define-test test-09-pack-consecutive-duplicated
+  (let ((seq-with-duplicates (list 1 2 2 3 4 5 5 2))
+        (seq-wo-duplicates (list "a" "b" "c" "a"))
+        (empty-seq ()))
+    (assert-equal '((1) (2 2) (3) (4) (5 5) (2)) (pack seq-with-duplicates))
+    (assert-equal '(("a") ("b") ("c") ("a")) (pack seq-wo-duplicates))
+    (assert-equal '() (pack empty-seq))))
+
 
 (run-tests :all)

@@ -12,4 +12,5 @@
            :my-reverse
            :palindrome-p
            :my-flatten
-           :uniq))
+           :uniq
+           :pack))
