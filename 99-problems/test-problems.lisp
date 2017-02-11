@@ -77,7 +77,8 @@
         (seq-wo-duplicates (list "a" "b" "c" "a" "b" "c"))
         (empty-seq ()))
     (assert-equal '(1 2 3 4 5 2 3) (uniq seq-with-duplicates))
-    (assert-equal '("a" "b" "c" "a" "b" "c") (uniq seq-wo-duplicates))))
+    (assert-equal '("a" "b" "c" "a" "b" "c") (uniq seq-wo-duplicates))
+    (assert-equal '() (uniq empty-seq))))
 
 
 (run-tests :all)
