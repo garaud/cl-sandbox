@@ -9,8 +9,8 @@
     ((null seq) ())
     ((eq (length seq) 1) seq)
     (t (let ((x (first seq))
-             (y (nth 1 seq)))
-         (if (eq x y)
+             (y (second seq)))
+         (if (equal x y)
              (append (list y) (uniq (rest (rest seq))))
              (append (list x) (uniq (rest seq))))))))
 
