@@ -5,4 +5,4 @@
 
 (defun encode (seq)
   "run-length encoding of a list"
-  seq)
+  (map 'list (lambda (x) (list (length x) (first x))) (pack seq)))

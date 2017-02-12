@@ -91,11 +91,11 @@
 
 ;; # 10: run-length encoding of a list
 (define-test test-10-run-length-encoding
-  (let ((seq-with-duplicates (list 1 2 2 2 4 5 5))
-        (seq-wo-duplicates (list "a" "b" "x" "x"))
+  (let ((seq-a (list 1 2 2 2 4 5 5))
+        (seq-b (list "a" "b" "x" "x"))
         (empty-seq ()))
-    (assert-equal '((1 1) (3 2) (1 4) (2 5)) (encode seq-with-duplicates))
-    (assert-equal '((1 "a") (1 "b") (1 "c") (1 "a")) (encode seq-wo-duplicates))
+    (assert-equal '((1 1) (3 2) (1 4) (2 5)) (encode seq-a))
+    (assert-equal '((1 "a") (1 "b") (2 "x")) (encode seq-b))
     (assert-equal '() (encode empty-seq))))
 
 
