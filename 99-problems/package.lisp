@@ -13,4 +13,5 @@
            :palindrome-p
            :my-flatten
            :uniq
-           :pack))
+           :pack
+           :encode))
