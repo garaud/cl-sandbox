@@ -14,4 +14,5 @@
            :my-flatten
            :uniq
            :pack
-           :encode))
+           :encode
+           :modified-encode))

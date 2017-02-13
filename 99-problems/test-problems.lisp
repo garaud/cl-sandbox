@@ -98,5 +98,13 @@
     (assert-equal '((1 "a") (1 "b") (2 "x")) (encode seq-b))
     (assert-equal '() (encode empty-seq))))
 
+;; # 11: modified run-length encoding of a list
+(define-test test-11-modified-run-length-encoding
+  (let ((seq-a (list 1 2 2 2 4 5 5))
+        (seq-b (list "a" "b" "x" "x"))
+        (empty-seq ()))
+    (assert-equal '(1 (3 2) 4 (2 5)) (encode seq-a))
+    (assert-equal '("a" "b" (2 "x")) (encode seq-b))
+    (assert-equal '() (encode empty-seq))))
 
 (run-tests :all)
