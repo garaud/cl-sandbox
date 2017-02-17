@@ -107,4 +107,13 @@
     (assert-equal '("a" "b" (2 "x")) (modified-encode seq-b))
     (assert-equal '() (modified-encode empty-seq))))
 
+;; # 12: decode a run-length encoding list
+(define-test test-12-decode-run-length-encoding
+  (let ((seq-a '((1 1) (3 2) (1 4) (2 5)))
+        (seq-b '((1 "a") (1 "b") (2 "x" "x")))
+        (empty-seq ()))
+    (assert-equal '(1 2 2 2 4 5 5) (decode seq-a))
+    (assert-equal '("a" "b" "x" "x") (decode seq-b))
+    (assert-equal '() (decode empty-seq))))
+
 (run-tests :all)

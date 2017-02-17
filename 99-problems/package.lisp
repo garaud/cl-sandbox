@@ -15,4 +15,5 @@
            :uniq
            :pack
            :encode
-           :modified-encode))
+           :modified-encode
+           :decode))

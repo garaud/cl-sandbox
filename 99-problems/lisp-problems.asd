@@ -18,5 +18,6 @@
                (:file "problem-08")
                (:file "problem-09")
                (:file "problem-10")
-               (:file "problem-11")))
+               (:file "problem-11")
+               (:file "problem-12")))
 
