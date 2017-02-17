@@ -67,9 +67,11 @@
 (define-test test-07-flatten-a-list
   (let ((nested (list '(:a :b) 12 '("one" "two") -5))
         (seq '(1 2 "a" t))
+        (empty-seq ())
         (nested-2 '((a (b) c) (d (e)))))
     (assert-equal '(:a :b 12 "one" "two" -5) (my-flatten nested))
     (assert-equal '(1 2 "a" t) (my-flatten seq))
+    (assert-equal () (my-flatten empty-seq))
     (assert-equal '(a b c d e) (my-flatten nested-2))))
 
 ;; # 08: eliminate consecutive duplicates of list elements
