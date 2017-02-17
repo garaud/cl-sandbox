@@ -10,6 +10,7 @@
                ((null seq) result)
                ((atom seq) (cons seq result))
                (t (recur (first seq) (recur (rest seq) result))))))
-    (recur seq nil)))
+    (recur seq ())))
 
 ;; (my-flatten (list '(a b) '(1 2) :z))
+;; (my-flatten ())
