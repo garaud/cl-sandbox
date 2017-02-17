@@ -111,7 +111,7 @@
 ;; # 12: decode a run-length encoding list
 (define-test test-12-decode-run-length-encoding
   (let ((seq-a '((1 1) (3 2) (1 4) (2 5)))
-        (seq-b '((1 "a") (1 "b") (2 "x" "x")))
+        (seq-b '((1 "a") (1 "b") (2 "x")))
         (empty-seq ()))
     (assert-equal '(1 2 2 2 4 5 5) (decode seq-a))
     (assert-equal '("a" "b" "x" "x") (decode seq-b))
