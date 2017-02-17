@@ -7,6 +7,7 @@
 
 ;; To see the failures
 (setq *print-failures* t)
+(setq *print-errors* t)
 
 
 ;; # 01: last element
