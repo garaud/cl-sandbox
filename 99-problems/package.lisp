@@ -16,4 +16,5 @@
            :pack
            :encode
            :modified-encode
-           :decode))
+           :decode
+           :encode-direct))

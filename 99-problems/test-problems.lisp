@@ -119,4 +119,13 @@
     (assert-equal '("a" "b" "x" "x") (decode seq-b))
     (assert-equal '() (decode empty-seq))))
 
+;; # 13: encode-direct a run-length encoding list
+(define-test test-13-encode-direct-run-length-encoding
+  (let ((seq-a (list 1 2 2 2 4 5 5))
+        (seq-b (list "a" "b" "x" "x"))
+        (empty-seq ()))
+    (assert-equal '(1 (3 2) 4 (2 5)) (encode-direct seq-a))
+    (assert-equal '("a" "b" (2 "x")) (encode-direct seq-b))
+    (assert-equal '() (encode-direct empty-seq))))
+
 (run-tests :all)
