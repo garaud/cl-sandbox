@@ -17,4 +17,5 @@
            :encode
            :modified-encode
            :decode
-           :encode-direct))
+           :encode-direct
+           :dupli))

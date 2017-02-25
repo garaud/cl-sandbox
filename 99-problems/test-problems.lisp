@@ -128,4 +128,13 @@
     (assert-equal '("a" "b" (2 "x")) (encode-direct seq-b))
     (assert-equal '() (encode-direct empty-seq))))
 
+;; # 14: duplicate the elements of a list
+(define-test test-14-duplicate-elements-of-a-list
+  (let ((seq-a (list 1 2 2 t 5 nil))
+        (seq-b (list "a" "b" "x" "x"))
+        (empty-seq ()))
+    (assert-equal '(1 1 2 2 2 2 t t 5 5 nil nil) (dupli seq-a))
+    (assert-equal '("a" "a" "b" "x" "x" "x" "x") (dupli seq-b))
+    (assert-equal '() (dupli empty-seq))))
+
 (run-tests :all)
